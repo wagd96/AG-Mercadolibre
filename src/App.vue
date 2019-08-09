@@ -1,23 +1,52 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <b-container>
+      <h1>AG-Mercadolibre</h1>
+      <button v-on:click="fetch">Consultar</button>
+      <div v-for="product of products" v-bind:key="product.id">
+        <b-row class="justify-content-md-center">
+          <b-col>
+            <b-card
+              v-bind:title="product.title"
+              v-bind:img-src="product.thumbnail"
+              img-alt="Image"
+              img-left
+              tag="article"
+              class="mb-4"
+            >
+              <b-card-text>${{product.price}}</b-card-text>
+            </b-card>
+          </b-col>
+        </b-row>
+      </div>
+    </b-container>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
-</script>
+import axios from "axios";
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+export default {
+  name: "App",
+  data: function() {
+    return {
+      products: []
+    };
+  },
+  methods: {
+    fetch() {
+      let baseUrl = "https://api.mercadolibre.com/sites/MCO";
+      let article = "huawei";
+      let result = axios
+        .get(`${baseUrl}/search?q=${article}`)
+        .then(res => {
+          this.products = res.data.results;
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
+};
+</script>

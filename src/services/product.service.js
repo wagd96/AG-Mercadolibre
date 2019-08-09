@@ -1,7 +1,7 @@
-import Axios from 'axios'
+// import Axios from 'axios'
 
-export default {
-    getProducts(product){
-        return Axios.get(`/search?q=${product}`)
-    }
-}
+// export default {
+//     getProducts(product){
+//         return Axios.get(`/search?q=${product}`)
+//     }
+// }

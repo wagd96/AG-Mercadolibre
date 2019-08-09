@@ -4,19 +4,18 @@ import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
-import Axios from 'axios'
+// import Axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 
-Axios.defaults.baseURL = `https://api.mercadolibre.com/sites/MCO`
-
-Vue.use(BootstrapVue)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
-})
+  template: '<App/>',
+  render: h => h(App)
+}).$mount('#app')
