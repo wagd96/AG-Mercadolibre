@@ -5,8 +5,22 @@ import App from './App'
 import router from './router'
 
 import 'bulma/css/bulma.css'
+import VueCurrencyFilter from 'vue-currency-filter'
+
 
 Vue.config.productionTip = false
+
+
+Vue.use(VueCurrencyFilter,
+  {
+    symbol : '$',
+    thousandsSeparator: '.',
+    fractionCount: 0,
+    fractionSeparator: ',',
+    symbolPosition: 'front',
+    symbolSpacing: true
+  })
+
 
 /* eslint-disable no-new */
 new Vue({

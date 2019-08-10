@@ -16,7 +16,7 @@
             </div>
             <div>
               <span class="title is-5">Precio:</span>
-              <span class="is-6">${{product.price}}</span>
+              <span class="is-6">{{product.price | currency }}</span>
             </div>
           </div>
         </div>
