@@ -12,7 +12,7 @@
           <div class="media-content">
             <div>
               <span class="title is-5">Vendedor:</span>
-              <span class="is-6">{{product.seller.id}}</span>
+              <span class="is-6">{{seller}}</span>
             </div>
             <div>
               <span class="title is-5">Precio:</span>
@@ -26,7 +26,33 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-    props:['product']
+    name: "l",
+    props:['product'],
+    data: function() {
+    return {
+      seller:'',
+      
+    };
+  },
+  created: function(){
+    this.getSeller()
+  },
+  methods: {
+    getSeller() {
+      let baseUrl = "https://api.mercadolibre.com/";
+      let search = this.search;
+      let results= axios
+        .get(`${baseUrl}/users/${this.product.seller.id}`)
+        .then(res => {
+          this.seller = res.data.nickname;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  }
 }
 </script>

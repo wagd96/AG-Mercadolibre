@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="hero has-background-warning is-gradient is-bold">
-      <div class="hero-body is-flex" style="display:inline-grid!important; align-self:center; margin-bottom:10px">
+      <div class="hero-body is-flex" style="display:inline-grid!important; align-self:center;">
         <h1 class="title is-1">
           <span class="has-text-black is-1">AlejandroGallego</span>
           <span class="subtitle has-text-link is-2">MercadoLibre</span>
@@ -45,8 +45,6 @@ export default {
     };
   },
   methods: {
-
-
     searchProducts() {
       let baseUrl = "https://api.mercadolibre.com/sites/MCO";
       let search = this.search;
